@@ -1,0 +1,52 @@
+<project name="familybookz" default="run" basedir=".">
+	<description>
+        FamilyBookz build file
+    </description>
+	<!-- set global properties for this build -->
+	<property name="jdk.version" value="1.7" />
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<path id="classpath">
+		<fileset dir="webapps/WEB-INF/lib" includes="**/*.jar" />
+	</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac source="${jdk.version}" target="${jdk.version}" debug="true" includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="classpath" encoding="UTF-8" />
+		<copy todir="${build}">
+			<fileset dir="${src}" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="jar" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}/lib" />
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/lib/familybookz.jar" basedir="${build}" />
+		<copy todir="webapps\WEB-INF\lib">
+			<fileset dir="${dist}/lib" />
+		</copy>
+	</target>
+
+	<target name="run" >
+		<java fork="true" classname="com.vnsoftware.embeddedserver.JettyServer">
+			<classpath>
+				<path refid="classpath" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>

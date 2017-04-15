@@ -1,0 +1,7 @@
+Build:
+
+export JAVA_HOME=/zserver/jdk1.8.0_60/
+ant clean
+ant jar
+5. jps and kill -9 jetty server process
+5. nohup sh runservice start  >> logfile.log & -------> to start server

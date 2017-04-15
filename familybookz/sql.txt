@@ -1,0 +1,1 @@
+update profile set mom=null, dad=null,children_ids=null,wifeorhusband_ids=null;

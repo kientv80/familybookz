@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "webapps/WEB-INF/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="login" template="/jsp/layout.jsp">
+		<put-attribute name="content" value="/jsp/login.jsp" />
+	</definition>
+	<definition name="standardlayout" template="/jsp/profilelayout.jsp">
+		<put-attribute name="header" value="/jsp/header2.jsp" />
+		<put-attribute name="menu" value="/jsp/menu.jsp" />
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	<definition name="timeline" extends="standardlayout">
+		<put-attribute name="header" value="/jsp/header2.jsp" />
+		<put-attribute name="menu" value="/jsp/menu.jsp" />
+		<put-attribute name="content" value="/jsp/timeline.jsp" />
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	
+	<definition name="family" extends="standardlayout">
+		<put-attribute name="content" value="/jsp/family.jsp" />
+	</definition>
+	<definition name="relationrequest" extends="standardlayout">
+		<put-attribute name="content" value="/jsp/relationrequest.jsp" />
+	</definition>
+	
+</tiles-definitions>

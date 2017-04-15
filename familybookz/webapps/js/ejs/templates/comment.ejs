@@ -1,0 +1,22 @@
+<div class="w3-col s1 m1 l1">
+	<a href="<%= cmt.commenterDomainName %>">
+		<img src="<%= cmt.profileAvatar %>" style="width: 30px;height: 30px" class="w3-circle">
+	</a>
+</div>
+<div class="w3-col s11 m11 l11">
+	<span class="profile_comment"><a href="<%= cmt.commenterDomainName %>"><%= cmt.profileName %></a></span>
+	
+	<span class="comment"><%= cmt.comment %></span>
+	<% if (cmt.type == 3){ %>
+		<a href="<%= cmt.url %>">
+			<img src="<%= cmt.image %>" style="width: 60px; height: 50px;padding: 4px;">
+			<span class="title"><%= cmt.title %></span>
+			<span class="comment"><%= cmt.desc %> </span>
+		</a>
+	<% } %>
+	<% if (cmt.type == 4){ %>
+		<img src="<%= cmt.image %>" style="width: 40px; height: 40px;" class="w3-circle" >
+	<% } %>
+	<br>
+	<a href="#" class="name">Like</a>  <a class="name" href="#">Reply</a>
+</div>
